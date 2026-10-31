@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .register-container {
+            max-width: 480px;
+            margin: 40px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .register-container input {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 11px;
+            margin: 7px 0 15px;
+        }
+        .register-container button {
+            width: 100%;
+            padding: 12px;
+            cursor: pointer;
+        }
+        #message {
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-container">
+        <h1>Student Registration</h1>
+        <p>Create your student account.</p>
+
+        <form id="registerForm">
+            <label for="full_name">Full Name</label>
+            <input id="full_name" name="full_name"
+                   type="text" maxlength="100" required>
+
+            <label for="student_id">Student ID</label>
+            <input id="student_id" name="student_id"
+                   type="text" maxlength="30">
+
+            <label for="course_section">Course / Section</label>
+            <input id="course_section" name="course_section"
+                   type="text" maxlength="50"
+                   placeholder="e.g. BSIT-4D">
+
+            <label for="username">Username</label>
+            <input id="username" name="username"
+                   type="text" maxlength="50" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password"
+                   type="password" minlength="8" required>
+
+            <label for="confirm_password">Confirm Password</label>
+            <input id="confirm_password" name="confirm_password"
+                   type="password" minlength="8" required>
+
+            <button type="submit">Create Account</button>
+            <p id="message" role="status"></p>
+        </form>
+
+        <p>Already have an account?
+            <a href="index.html">Login here</a>
+        </p>
+    </div>
+
+    <script>
+        const form = document.getElementById("registerForm");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();
+            message.textContent = "";
+
+            const password = form.password.value;
+            const confirmPassword = form.confirm_password.value;
+
+            if (password !== confirmPassword) {
+                message.textContent = "Passwords do not match.";
+                return;
+            }
+
+            try {
+                const response = await fetch("register.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        full_name: form.full_name.value,
+                        student_id: form.student_id.value,
+                        course_section: form.course_section.value,
+                        username: form.username.value,
+                        password: password
+                    })
+                });
+
+                const result = await response.json();
+                message.textContent = result.message;
+
+                if (response.ok && result.success) {
+                    form.reset();
+                    setTimeout(function() {
+                        window.location.href = "index.html";
+                    }, 1500);
+                }
+            } catch (error) {
+                message.textContent =
+                    "Unable to connect. Check that Apache and MySQL are running.";
+            }
+        });
+    </script>
+
+</body>
+</html>

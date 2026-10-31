@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Borrowing Records - Student Equipment Borrowing Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-circle small-logo">
+                SEB
+            </div>
+
+            <h2>Equipment System</h2>
+
+            <p>Student Organization</p>
+
+        </div>
+
+
+        <!-- MENU -->
+
+        <nav class="sidebar-menu">
+
+            <a href="admin-dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="manage-equipment.html">
+                💻 Manage Equipment
+            </a>
+
+            <a href="borrowing-requests.html">
+                📋 Borrowing Requests
+            </a>
+
+            <a href="borrowing-records.html" class="active">
+                📚 Borrowing Records
+            </a>
+
+            <a href="manage-students.html">
+                👥 Manage Students
+            </a>
+
+            <a href="index.html" class="logout-link">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Borrowing Records</h1>
+
+                <p>
+                    View and monitor all equipment borrowing records.
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <strong>Admin</strong>
+
+                    <small>
+                        Organization Officer
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+
+        <section class="dashboard-content">
+
+
+            <!-- INTRODUCTION -->
+
+            <div class="welcome-box">
+
+                <h2>Equipment Borrowing History</h2>
+
+                <p>
+                    View the borrowing history of equipment used by students and organization members.
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="equipment-actions">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="recordSearch"
+                        placeholder="Search borrowing records..."
+                        onkeyup="searchRecords()"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- RECORDS TABLE -->
+
+            <div class="table-container">
+
+                <table id="recordsTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Record ID</th>
+
+                            <th>Student / Member</th>
+
+                            <th>Equipment</th>
+
+                            <th>Quantity</th>
+
+                            <th>Borrow Date</th>
+
+                            <th>Return Date</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <!-- RECORD 1 -->
+
+                        <tr>
+
+                            <td>BR-001</td>
+
+                            <td>John Reyes</td>
+
+                            <td>Laptop</td>
+
+                            <td>1</td>
+
+                            <td>Sept. 10, 2026</td>
+
+                            <td>Sept. 12, 2026</td>
+
+                            <td>
+
+                                <span class="status returned">
+                                    Returned
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- RECORD 2 -->
+
+                        <tr>
+
+                            <td>BR-002</td>
+
+                            <td>Maria Santos</td>
+
+                            <td>Projector</td>
+
+                            <td>1</td>
+
+                            <td>Sept. 13, 2026</td>
+
+                            <td>Sept. 13, 2026</td>
+
+                            <td>
+
+                                <span class="status returned">
+                                    Returned
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- RECORD 3 -->
+
+                        <tr>
+
+                            <td>BR-003</td>
+
+                            <td>Kevin Cruz</td>
+
+                            <td>Speaker</td>
+
+                            <td>1</td>
+
+                            <td>Sept. 15, 2026</td>
+
+                            <td>Sept. 17, 2026</td>
+
+                            <td>
+
+                                <span class="status approved">
+                                    Active
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- RECORD 4 -->
+
+                        <tr>
+
+                            <td>BR-004</td>
+
+                            <td>Angela Garcia</td>
+
+                            <td>Microphone</td>
+
+                            <td>2</td>
+
+                            <td>Sept. 16, 2026</td>
+
+                            <td>Sept. 18, 2026</td>
+
+                            <td>
+
+                                <span class="status returned">
+                                    Returned
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- RECORD 5 -->
+
+                        <tr>
+
+                            <td>BR-005</td>
+
+                            <td>Mark Villanueva</td>
+
+                            <td>Extension Cord</td>
+
+                            <td>2</td>
+
+                            <td>Sept. 18, 2026</td>
+
+                            <td>Sept. 20, 2026</td>
+
+                            <td>
+
+                                <span class="status approved">
+                                    Active
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- RECORD 6 -->
+
+                        <tr>
+
+                            <td>BR-006</td>
+
+                            <td>Sofia Mendoza</td>
+
+                            <td>HDMI Cable</td>
+
+                            <td>3</td>
+
+                            <td>Sept. 19, 2026</td>
+
+                            <td>Sept. 19, 2026</td>
+
+                            <td>
+
+                                <span class="status returned">
+                                    Returned
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        /* SEARCH BORROWING RECORDS */
+
+        function searchRecords() {
+
+            const input =
+                document.getElementById("recordSearch");
+
+            const filter =
+                input.value.toLowerCase();
+
+            const table =
+                document.getElementById("recordsTable");
+
+            const rows =
+                table
+                    .getElementsByTagName("tbody")[0]
+                    .getElementsByTagName("tr");
+
+
+            for (let i = 0; i < rows.length; i++) {
+
+                const text =
+                    rows[i].textContent.toLowerCase();
+
+
+                if (text.includes(filter)) {
+
+                    rows[i].style.display = "";
+
+                } else {
+
+                    rows[i].style.display = "none";
+
+                }
+
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

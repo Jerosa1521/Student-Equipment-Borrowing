@@ -1,0 +1,7 @@
+# Database configuration
+config/db.php
+
+# Temporary files
+*.log
+.DS_Store
+Thumbs.db

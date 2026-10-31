@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Borrow Equipment - Student Equipment Borrowing Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-circle small-logo">
+                SEB
+            </div>
+
+            <h2>Equipment System</h2>
+
+            <p>Student Organization</p>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="student-dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="equipment.html">
+                💻 Equipment
+            </a>
+
+            <a href="borrow.html" class="active">
+                📝 Borrow Equipment
+            </a>
+
+            <a href="my-borrowings.html">
+                📚 My Borrowings
+            </a>
+
+            <a href="profile.html">
+                👤 My Profile
+            </a>
+
+            <a href="index.html" class="logout-link">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <main class="main-content">
+
+
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Borrow Equipment</h1>
+
+                <p>
+                    Submit a request to borrow organization equipment.
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    J
+                </div>
+
+                <div>
+
+                    <strong>Student</strong>
+
+                    <small>
+                        Organization Member
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="dashboard-content">
+
+
+
+            <div class="welcome-box">
+
+                <h2>Equipment Borrowing Request</h2>
+
+                <p>
+                    Fill out the form below to request equipment for your organization-related activity.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="login-box"
+                style="max-width: 700px; margin: 0 auto; text-align: left;"
+            >
+
+                <form onsubmit="submitRequest(event)">
+
+
+                    <label for="studentName">
+                        Student / Member Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+
+                    <label for="equipment">
+                        Select Equipment
+                    </label>
+
+                    <select
+                        id="equipment"
+                        required
+                        style="width: 100%; padding: 13px 14px; margin-bottom: 18px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px;"
+                    >
+
+                        <option value="">
+                            -- Select Equipment --
+                        </option>
+
+                        <option value="Laptop">
+                            Laptop
+                        </option>
+
+                        <option value="Projector">
+                            Projector
+                        </option>
+
+                        <option value="Speaker">
+                            Speaker
+                        </option>
+
+                        <option value="Microphone">
+                            Microphone
+                        </option>
+
+                        <option value="Extension Cord">
+                            Extension Cord
+                        </option>
+
+                        <option value="HDMI Cable">
+                            HDMI Cable
+                        </option>
+
+                    </select>
+
+
+
+                    <label for="quantity">
+                        Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        min="1"
+                        value="1"
+                        required
+                    >
+
+
+                    <label for="borrowDate">
+                        Borrow Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="borrowDate"
+                        required
+                    >
+
+
+                    <label for="returnDate">
+                        Expected Return Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="returnDate"
+                        required
+                    >
+
+
+                    <label for="purpose">
+                        Purpose
+                    </label>
+
+                    <input
+                        type="text"
+                        id="purpose"
+                        placeholder="Example: Organization meeting"
+                        required
+                    >
+
+
+
+                    <label for="notes">
+                        Additional Notes
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        rows="4"
+                        placeholder="Enter additional information (optional)"
+                        style="width: 100%; padding: 13px 14px; margin-bottom: 18px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; resize: vertical;"
+                    ></textarea>
+
+
+                    <!-- BUTTONS -->
+
+                    <div style="display: flex; gap: 10px;">
+
+                        <button
+                            type="submit"
+                            class="btn primary-btn"
+                        >
+                            Submit Request
+                        </button>
+
+                        <a
+                            href="equipment.html"
+                            class="btn"
+                            style="background: #e5e7eb; color: #374151; text-align: center;"
+                        >
+                            Cancel
+                        </a>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <script>
+
+        function submitRequest(event) {
+
+            event.preventDefault();
+
+
+            const studentName =
+                document.getElementById("studentName").value;
+
+            const equipment =
+                document.getElementById("equipment").value;
+
+            const quantity =
+                document.getElementById("quantity").value;
+
+            const borrowDate =
+                document.getElementById("borrowDate").value;
+
+            const returnDate =
+                document.getElementById("returnDate").value;
+
+            const purpose =
+                document.getElementById("purpose").value;
+
+
+            if (returnDate < borrowDate) {
+
+                alert(
+                    "Return date cannot be earlier than the borrow date."
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "Borrowing request submitted successfully!\n\n" +
+
+                "Student / Member: " +
+                studentName +
+
+                "\nEquipment: " +
+                equipment +
+
+                "\nQuantity: " +
+                quantity +
+
+                "\nBorrow Date: " +
+                borrowDate +
+
+                "\nReturn Date: " +
+                returnDate +
+
+                "\nPurpose: " +
+                purpose
+            );
+
+
+            window.location.href = "my-borrowings.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

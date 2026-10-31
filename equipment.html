@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Equipment - Student Equipment Borrowing Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-circle small-logo">
+                SEB
+            </div>
+
+            <h2>Equipment System</h2>
+
+            <p>Student Organization</p>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="student-dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="equipment.html" class="active">
+                💻 Equipment
+            </a>
+
+            <a href="borrow.html">
+                📝 Borrow Equipment
+            </a>
+
+            <a href="my-borrowings.html">
+                📚 My Borrowings
+            </a>
+
+            <a href="profile.html">
+                👤 My Profile
+            </a>
+
+            <a href="index.html" class="logout-link">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <main class="main-content">
+
+
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Available Equipment</h1>
+
+                <p>
+                    View equipment available for student organization members.
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    J
+                </div>
+
+                <div>
+
+                    <strong>Juan Dela Cruz</strong>
+
+                    <small>
+                        Organization Member
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="dashboard-content">
+
+
+            <div class="welcome-box">
+
+                <h2>Equipment Inventory</h2>
+
+                <p>
+                    Browse the available equipment and select an item if you want to request it for borrowing.
+                </p>
+
+            </div>
+
+
+            <div class="equipment-actions">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="equipmentSearch"
+                        placeholder="Search equipment..."
+                        onkeyup="searchEquipment()"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table id="equipmentTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Equipment ID</th>
+
+                            <th>Equipment Name</th>
+
+                            <th>Category</th>
+
+                            <th>Available</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <tr>
+
+                            <td>EQ-001</td>
+
+                            <td>Laptop</td>
+
+                            <td>Computer Equipment</td>
+
+                            <td>7</td>
+
+                            <td>
+
+                                <span class="status approved">
+                                    Available
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <a
+                                    href="borrow.html"
+                                    class="table-btn"
+                                >
+                                    Borrow
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-002</td>
+
+                            <td>Projector</td>
+
+                            <td>Presentation Equipment</td>
+
+                            <td>3</td>
+
+                            <td>
+
+                                <span class="status approved">
+                                    Available
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <a
+                                    href="borrow.html"
+                                    class="table-btn"
+                                >
+                                    Borrow
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-003</td>
+
+                            <td>Speaker</td>
+
+                            <td>Audio Equipment</td>
+
+                            <td>1</td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Limited
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <a
+                                    href="borrow.html"
+                                    class="table-btn"
+                                >
+                                    Borrow
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-004</td>
+
+                            <td>Microphone</td>
+
+                            <td>Audio Equipment</td>
+
+                            <td>6</td>
+
+                            <td>
+
+                                <span class="status approved">
+                                    Available
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <a
+                                    href="borrow.html"
+                                    class="table-btn"
+                                >
+                                    Borrow
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-005</td>
+
+                            <td>Camera</td>
+
+                            <td>Photography Equipment</td>
+
+                            <td>0</td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Unavailable
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="delete-btn"
+                                    disabled
+                                >
+                                    Unavailable
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <tr>
+
+                            <td>EQ-006</td>
+
+                            <td>Extension Cord</td>
+
+                            <td>Accessories</td>
+
+                            <td>12</td>
+
+                            <td>
+
+                                <span class="status approved">
+                                    Available
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <a
+                                    href="borrow.html"
+                                    class="table-btn"
+                                >
+                                    Borrow
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-007</td>
+
+                            <td>HDMI Cable</td>
+
+                            <td>Accessories</td>
+
+                            <td>18</td>
+
+                            <td>
+
+                                <span class="status approved">
+                                    Available
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <a
+                                    href="borrow.html"
+                                    class="table-btn"
+                                >
+                                    Borrow
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <script>
+
+
+        function searchEquipment() {
+
+            const input =
+                document.getElementById("equipmentSearch");
+
+            const filter =
+                input.value.toLowerCase();
+
+            const table =
+                document.getElementById("equipmentTable");
+
+            const rows =
+                table
+                    .getElementsByTagName("tbody")[0]
+                    .getElementsByTagName("tr");
+
+
+            for (let i = 0; i < rows.length; i++) {
+
+                const text =
+                    rows[i].textContent.toLowerCase();
+
+
+                if (text.includes(filter)) {
+
+                    rows[i].style.display = "";
+
+                } else {
+
+                    rows[i].style.display = "none";
+
+                }
+
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

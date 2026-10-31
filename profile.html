@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - Student Equipment Borrowing Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-circle small-logo">
+                SEB
+            </div>
+
+            <h2>Equipment System</h2>
+
+            <p>Student Organization</p>
+
+        </div>
+
+
+
+        <nav class="sidebar-menu">
+
+            <a href="student-dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="equipment.html">
+                💻 Equipment
+            </a>
+
+            <a href="borrow.html">
+                📝 Borrow Equipment
+            </a>
+
+            <a href="my-borrowings.html">
+                📚 My Borrowings
+            </a>
+
+            <a href="profile.html" class="active">
+                👤 My Profile
+            </a>
+
+            <a href="index.html" class="logout-link">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <main class="main-content">
+
+
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>My Profile</h1>
+
+                <p>
+                    View and update your student information.
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    J
+                </div>
+
+                <div>
+
+                    <strong>Student</strong>
+
+                    <small>
+                        Organization Member
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="dashboard-content">
+
+
+
+            <div class="welcome-box">
+
+                <h2>Student Profile</h2>
+
+                <p>
+                    Enter your personal and organization information below.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="login-box"
+                style="max-width: 700px; margin: 0 auto; text-align: left;"
+            >
+
+                <form onsubmit="saveProfile(event)">
+
+
+                    <div style="text-align: center; margin-bottom: 25px;">
+
+                        <div
+                            class="admin-avatar"
+                            style="width: 80px; height: 80px; margin: 0 auto 12px; font-size: 28px;"
+                            id="profileAvatar"
+                        >
+                            J
+                        </div>
+
+                        <h2
+                            id="profileName"
+                            style="margin-bottom: 5px;"
+                        >
+                            Your Name
+                        </h2>
+
+                        <p style="color: #6b7280; font-size: 13px;">
+                            Organization Member
+                        </p>
+
+                    </div>
+
+
+                    <!-- STUDENT ID -->
+
+                    <label for="studentId">
+                        Student ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentId"
+                        placeholder="Enter your student ID"
+                        required
+                    >
+
+
+
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+
+
+                    <label for="course">
+                        Course
+                    </label>
+
+                    <input
+                        type="text"
+                        id="course"
+                        placeholder="Example: BSIT"
+                        required
+                    >
+
+
+
+                    <label for="yearLevel">
+                        Year Level
+                    </label>
+
+                    <select
+                        id="yearLevel"
+                        required
+                        style="width: 100%; padding: 13px 14px; margin-bottom: 18px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px;"
+                    >
+
+                        <option value="">
+                            -- Select Year Level --
+                        </option>
+
+                        <option value="1st Year">
+                            1st Year
+                        </option>
+
+                        <option value="2nd Year">
+                            2nd Year
+                        </option>
+
+                        <option value="3rd Year">
+                            3rd Year
+                        </option>
+
+                        <option value="4th Year">
+                            4th Year
+                        </option>
+
+                    </select>
+
+
+
+                    <label for="organizationRole">
+                        Organization Role
+                    </label>
+
+                    <select
+                        id="organizationRole"
+                        required
+                        style="width: 100%; padding: 13px 14px; margin-bottom: 18px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px;"
+                    >
+
+                        <option value="">
+                            -- Select Role --
+                        </option>
+
+                        <option value="Organization Member">
+                            Organization Member
+                        </option>
+
+                        <option value="Officer">
+                            Officer
+                        </option>
+
+                    </select>
+
+
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+
+
+                    <label for="contact">
+                        Contact Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contact"
+                        placeholder="Enter your contact number"
+                        required
+                    >
+
+
+
+                    <label>
+                        Account Status
+                    </label>
+
+                    <div style="margin-bottom: 18px;">
+
+                        <span class="status approved">
+                            Active
+                        </span>
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="btn primary-btn"
+                        style="width: 100%;"
+                    >
+                        Save Profile
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <script>
+
+        function saveProfile(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById("fullName").value;
+
+
+            if (name.trim() === "") {
+
+                alert("Please enter your full name.");
+
+                return;
+
+            }
+
+
+            document.getElementById("profileName").textContent = name;
+
+
+            document.getElementById("profileAvatar").textContent =
+                name.charAt(0).toUpperCase();
+
+
+            alert(
+                "Profile saved successfully!"
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Borrowings - Student Equipment Borrowing Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-circle small-logo">
+                SEB
+            </div>
+
+            <h2>Equipment System</h2>
+
+            <p>Student Organization</p>
+
+        </div>
+
+
+
+        <nav class="sidebar-menu">
+
+            <a href="student-dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="equipment.html">
+                💻 Equipment
+            </a>
+
+            <a href="borrow.html">
+                📝 Borrow Equipment
+            </a>
+
+            <a href="my-borrowings.html" class="active">
+                📚 My Borrowings
+            </a>
+
+            <a href="profile.html">
+                👤 My Profile
+            </a>
+
+            <a href="index.html" class="logout-link">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <main class="main-content">
+
+
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>My Borrowings</h1>
+
+                <p>
+                    View your current and previous equipment borrowing requests.
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    J
+                </div>
+
+                <div>
+
+                    <strong>Student</strong>
+
+                    <small>
+                        Organization Member
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="dashboard-content">
+
+
+
+            <div class="welcome-box">
+
+                <h2>Borrowing History</h2>
+
+                <p>
+                    Track the status of your equipment borrowing requests.
+                </p>
+
+            </div>
+
+
+
+            <div class="stats-grid">
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <h3>1</h3>
+
+                        <p>Pending Requests</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📦
+                    </div>
+
+                    <div>
+
+                        <h3>1</h3>
+
+                        <p>Active Borrowings</p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <h3>3</h3>
+
+                        <p>Returned Items</p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <h3>5</h3>
+
+                        <p>Total Requests</p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>My Borrowing Records</h2>
+
+                    <p>
+                        Your equipment borrowing transactions.
+                    </p>
+
+                </div>
+
+
+                <a href="borrow.html" class="view-all">
+                    + New Request
+                </a>
+
+            </div>
+
+
+
+            <div class="table-container">
+
+                <table id="borrowingsTable">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Request ID</th>
+
+                            <th>Equipment</th>
+
+                            <th>Quantity</th>
+
+                            <th>Borrow Date</th>
+
+                            <th>Return Date</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <!-- RECORD 1 -->
+
+                        <tr>
+
+                            <td>
+                                REQ-001
+                            </td>
+
+                            <td>
+                                Laptop
+                            </td>
+
+                            <td>
+                                1
+                            </td>
+
+                            <td>
+                                Sept. 22, 2026
+                            </td>
+
+                            <td>
+                                Sept. 24, 2026
+                            </td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                REQ-002
+                            </td>
+
+                            <td>
+                                Projector
+                            </td>
+
+                            <td>
+                                1
+                            </td>
+
+                            <td>
+                                Sept. 15, 2026
+                            </td>
+
+                            <td>
+                                Sept. 16, 2026
+                            </td>
+
+                            <td>
+
+                                <span class="status approved">
+                                    Approved / Active
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                REQ-003
+                            </td>
+
+                            <td>
+                                HDMI Cable
+                            </td>
+
+                            <td>
+                                2
+                            </td>
+
+                            <td>
+                                Sept. 10, 2026
+                            </td>
+
+                            <td>
+                                Sept. 11, 2026
+                            </td>
+
+                            <td>
+
+                                <span class="status returned">
+                                    Returned
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                REQ-004
+                            </td>
+
+                            <td>
+                                Microphone
+                            </td>
+
+                            <td>
+                                1
+                            </td>
+
+                            <td>
+                                Sept. 5, 2026
+                            </td>
+
+                            <td>
+                                Sept. 6, 2026
+                            </td>
+
+                            <td>
+
+                                <span class="status returned">
+                                    Returned
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                REQ-005
+                            </td>
+
+                            <td>
+                                Extension Cord
+                            </td>
+
+                            <td>
+                                2
+                            </td>
+
+                            <td>
+                                Aug. 28, 2026
+                            </td>
+
+                            <td>
+                                Aug. 29, 2026
+                            </td>
+
+                            <td>
+
+                                <span class="status returned">
+                                    Returned
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>

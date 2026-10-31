@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Students</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-circle small-logo">SEB</div>
+            <h2>Student Equipment</h2>
+            <p>Organization System</p>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="manage-equipment.html">Manage Equipment</a>
+            <a href="borrowing-requests.html">Borrowing Requests</a>
+            <a href="borrowing-records.html">Borrowing Records</a>
+            <a href="manage-students.html" class="active">Manage Students</a>
+            <a href="index.html" class="logout-link">Logout</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <h1>Manage Students</h1>
+                <p>View registered student accounts</p>
+            </div>
+        </header>
+
+        <section class="dashboard-content">
+            <div class="section-header">
+                <div>
+                    <h2>Student List</h2>
+                    <p>Registered students in the system</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Full Name</th>
+                            <th>Username</th>
+                            <th>Course / Section</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody">
+    <tr>
+        <td colspan="4">Loading student records...</td>
+    </tr>
+</tbody>
+                </table>
+            </div>
+
+            <p>
+                <a href="admin-dashboard.html">Back to Dashboard</a>
+            </p>
+        </section>
+    </main>
+
+    
+<script>
+document.addEventListener("DOMContentLoaded", async function () {
+    const tableBody = document.getElementById("studentsTableBody");
+
+    if (!tableBody) {
+        console.error("Missing studentsTableBody element.");
+        return;
+    }
+
+    try {
+        const response = await fetch("get-students.php", {
+            credentials: "same-origin"
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(data.message || "Failed to load students.");
+        }
+
+        tableBody.innerHTML = "";
+
+        if (!data.students || data.students.length === 0) {
+            tableBody.innerHTML =
+                '<tr><td colspan="4">No registered students yet.</td></tr>';
+            return;
+        }
+
+        data.students.forEach(function (student) {
+            const row = document.createElement("tr");
+
+            [
+                student.student_id || "N/A",
+                student.full_name || "N/A",
+                student.username || "N/A",
+                student.course_section || "N/A"
+            ].forEach(function (value) {
+                const cell = document.createElement("td");
+                cell.textContent = value;
+                row.appendChild(cell);
+            });
+
+            tableBody.appendChild(row);
+        });
+    } catch (error) {
+        console.error("Unable to load students:", error);
+        tableBody.innerHTML =
+            '<tr><td colspan="4">Unable to load student records. Check the browser Console.</td></tr>';
+    }
+});
+</script>
+</body>
+</html>

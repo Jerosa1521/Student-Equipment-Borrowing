@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Borrowing Requests - Student Equipment Borrowing Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-circle small-logo">
+                SEB
+            </div>
+
+            <h2>Equipment System</h2>
+
+            <p>Student Organization</p>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="admin-dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="manage-equipment.html">
+                💻 Manage Equipment
+            </a>
+
+            <a href="borrowing-requests.html" class="active">
+                📋 Borrowing Requests
+            </a>
+
+            <a href="borrowing-records.html">
+                📚 Borrowing Records
+            </a>
+
+            <a href="manage-students.html">
+                👥 Manage Students
+            </a>
+
+            <a href="index.html" class="logout-link">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Borrowing Requests</h1>
+
+                <p>
+                    Review and manage equipment borrowing requests.
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <strong>Admin</strong>
+
+                    <small>
+                        Organization Officer
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+
+        <section class="dashboard-content">
+
+
+            <!-- INTRODUCTION -->
+
+            <div class="welcome-box">
+
+                <h2>Pending Borrowing Requests</h2>
+
+                <p>
+                    Review requests submitted by students and organization members.
+                </p>
+
+            </div>
+
+
+            <!-- REQUEST TABLE -->
+
+            <div class="table-container">
+
+                <table id="requestTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Request ID</th>
+
+                            <th>Student / Member</th>
+
+                            <th>Equipment</th>
+
+                            <th>Quantity</th>
+
+                            <th>Borrow Date</th>
+
+                            <th>Return Date</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <!-- REQUEST 1 -->
+
+                        <tr>
+
+                            <td>REQ-001</td>
+
+                            <td>Juan Dela Cruz</td>
+
+                            <td>Laptop</td>
+
+                            <td>1</td>
+
+                            <td>Sept. 22, 2026</td>
+
+                            <td>Sept. 24, 2026</td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="approveRequest('REQ-001', 'Juan Dela Cruz')"
+                                >
+                                    Approve
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="rejectRequest('REQ-001', 'Juan Dela Cruz')"
+                                >
+                                    Reject
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- REQUEST 2 -->
+
+                        <tr>
+
+                            <td>REQ-002</td>
+
+                            <td>Maria Santos</td>
+
+                            <td>Projector</td>
+
+                            <td>1</td>
+
+                            <td>Sept. 23, 2026</td>
+
+                            <td>Sept. 23, 2026</td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="approveRequest('REQ-002', 'Maria Santos')"
+                                >
+                                    Approve
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="rejectRequest('REQ-002', 'Maria Santos')"
+                                >
+                                    Reject
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- REQUEST 3 -->
+
+                        <tr>
+
+                            <td>REQ-003</td>
+
+                            <td>Kevin Reyes</td>
+
+                            <td>Speaker</td>
+
+                            <td>1</td>
+
+                            <td>Sept. 25, 2026</td>
+
+                            <td>Sept. 26, 2026</td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="approveRequest('REQ-003', 'Kevin Reyes')"
+                                >
+                                    Approve
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="rejectRequest('REQ-003', 'Kevin Reyes')"
+                                >
+                                    Reject
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- REQUEST 4 -->
+
+                        <tr>
+
+                            <td>REQ-004</td>
+
+                            <td>Angela Garcia</td>
+
+                            <td>Camera</td>
+
+                            <td>1</td>
+
+                            <td>Sept. 27, 2026</td>
+
+                            <td>Sept. 28, 2026</td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="approveRequest('REQ-004', 'Angela Garcia')"
+                                >
+                                    Approve
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="rejectRequest('REQ-004', 'Angela Garcia')"
+                                >
+                                    Reject
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        /* APPROVE REQUEST */
+
+        function approveRequest(requestID, studentName) {
+
+            const confirmApprove = confirm(
+                "Approve borrowing request " +
+                requestID +
+                " from " +
+                studentName +
+                "?"
+            );
+
+
+            if (confirmApprove) {
+
+                alert(
+                    "Request " +
+                    requestID +
+                    " has been approved."
+                );
+
+            }
+
+        }
+
+
+        /* REJECT REQUEST */
+
+        function rejectRequest(requestID, studentName) {
+
+            const confirmReject = confirm(
+                "Reject borrowing request " +
+                requestID +
+                " from " +
+                studentName +
+                "?"
+            );
+
+
+            if (confirmReject) {
+
+                const table =
+                    document.getElementById("requestTable");
+
+                const rows =
+                    table
+                        .getElementsByTagName("tbody")[0]
+                        .getElementsByTagName("tr");
+
+
+                for (let i = 0; i < rows.length; i++) {
+
+                    const requestNumber =
+                        rows[i]
+                            .cells[0]
+                            .textContent
+                            .trim();
+
+
+                    if (requestNumber === requestID) {
+
+                        rows[i].remove();
+
+                        alert(
+                            "Request " +
+                            requestID +
+                            " has been rejected."
+                        );
+
+                        break;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,583 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Equipment - Student Equipment Borrowing Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-circle small-logo">
+                SEB
+            </div>
+
+            <h2>Equipment System</h2>
+
+            <p>Student Organization</p>
+
+        </div>
+
+
+        <!-- MENU -->
+        <nav class="sidebar-menu">
+
+            <a href="admin-dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="manage-equipment.html" class="active">
+                💻 Manage Equipment
+            </a>
+
+            <a href="borrowing-requests.html">
+                📋 Borrowing Requests
+            </a>
+
+            <a href="borrowing-records.html">
+                📚 Borrowing Records
+            </a>
+
+            <a href="manage-students.html">
+                👥 Manage Students
+            </a>
+
+            <a href="index.html" class="logout-link">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div>
+
+                <h1>Manage Equipment</h1>
+
+                <p>
+                    Manage the equipment owned by the student organization.
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <strong>Admin</strong>
+
+                    <small>
+                        Organization Officer
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+        <section class="dashboard-content">
+
+
+            <!-- INTRODUCTION -->
+            <div class="welcome-box">
+
+                <h2>Equipment Inventory</h2>
+
+                <p>
+                    View, manage, and monitor equipment available for student organization members to borrow.
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH AND ADD BUTTON -->
+            <div class="equipment-actions">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="equipmentSearch"
+                        placeholder="Search equipment..."
+                        onkeyup="searchEquipment()"
+                    >
+
+                </div>
+
+
+                <button
+                    class="add-equipment-btn"
+                    onclick="showAddMessage()"
+                >
+                    + Add Equipment
+                </button>
+
+            </div>
+
+
+            <!-- EQUIPMENT TABLE -->
+            <div class="table-container">
+
+                <table id="equipmentTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Equipment ID</th>
+
+                            <th>Equipment Name</th>
+
+                            <th>Category</th>
+
+                            <th>Quantity</th>
+
+                            <th>Available</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <tr>
+
+                            <td>EQ-001</td>
+
+                            <td>Laptop</td>
+
+                            <td>Computer Equipment</td>
+
+                            <td>10</td>
+
+                            <td>7</td>
+
+                            <td>
+                                <span class="status approved">
+                                    Available
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="editEquipment('Laptop')"
+                                >
+                                    Edit
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="deleteEquipment('Laptop')"
+                                >
+                                    Delete
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-002</td>
+
+                            <td>Projector</td>
+
+                            <td>Presentation Equipment</td>
+
+                            <td>5</td>
+
+                            <td>3</td>
+
+                            <td>
+                                <span class="status approved">
+                                    Available
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="editEquipment('Projector')"
+                                >
+                                    Edit
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="deleteEquipment('Projector')"
+                                >
+                                    Delete
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-003</td>
+
+                            <td>Speaker</td>
+
+                            <td>Audio Equipment</td>
+
+                            <td>4</td>
+
+                            <td>1</td>
+
+                            <td>
+                                <span class="status pending">
+                                    Limited
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="editEquipment('Speaker')"
+                                >
+                                    Edit
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="deleteEquipment('Speaker')"
+                                >
+                                    Delete
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-004</td>
+
+                            <td>Microphone</td>
+
+                            <td>Audio Equipment</td>
+
+                            <td>8</td>
+
+                            <td>6</td>
+
+                            <td>
+                                <span class="status approved">
+                                    Available
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="editEquipment('Microphone')"
+                                >
+                                    Edit
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="deleteEquipment('Microphone')"
+                                >
+                                    Delete
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-005</td>
+
+                            <td>Camera</td>
+
+                            <td>Photography Equipment</td>
+
+                            <td>3</td>
+
+                            <td>0</td>
+
+                            <td>
+                                <span class="status pending">
+                                    Unavailable
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="editEquipment('Camera')"
+                                >
+                                    Edit
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="deleteEquipment('Camera')"
+                                >
+                                    Delete
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-006</td>
+
+                            <td>Extension Cord</td>
+
+                            <td>Accessories</td>
+
+                            <td>15</td>
+
+                            <td>12</td>
+
+                            <td>
+                                <span class="status approved">
+                                    Available
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="editEquipment('Extension Cord')"
+                                >
+                                    Edit
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="deleteEquipment('Extension Cord')"
+                                >
+                                    Delete
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>EQ-007</td>
+
+                            <td>HDMI Cable</td>
+
+                            <td>Accessories</td>
+
+                            <td>20</td>
+
+                            <td>18</td>
+
+                            <td>
+                                <span class="status approved">
+                                    Available
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="table-btn"
+                                    onclick="editEquipment('HDMI Cable')"
+                                >
+                                    Edit
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="deleteEquipment('HDMI Cable')"
+                                >
+                                    Delete
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        /* SEARCH EQUIPMENT */
+
+        function searchEquipment() {
+
+            const input =
+                document.getElementById("equipmentSearch");
+
+            const filter =
+                input.value.toLowerCase();
+
+            const table =
+                document.getElementById("equipmentTable");
+
+            const rows =
+                table.getElementsByTagName("tbody")[0]
+                     .getElementsByTagName("tr");
+
+
+            for (let i = 0; i < rows.length; i++) {
+
+                const text =
+                    rows[i].textContent.toLowerCase();
+
+
+                if (text.includes(filter)) {
+
+                    rows[i].style.display = "";
+
+                } else {
+
+                    rows[i].style.display = "none";
+
+                }
+
+            }
+
+        }
+
+
+        /* ADD EQUIPMENT */
+
+        function showAddMessage() {
+
+            alert(
+                "Add Equipment\n\n" +
+                "This feature is part of the front-end prototype. " +
+                "The actual equipment form and database connection " +
+                "will be added during the Final Term."
+            );
+
+        }
+
+
+        /* EDIT EQUIPMENT */
+
+        function editEquipment(name) {
+
+            alert(
+                "Edit Equipment: " + name + "\n\n" +
+                "The edit form and database connection " +
+                "will be added during the Final Term."
+            );
+
+        }
+
+
+        /* DELETE EQUIPMENT */
+
+        function deleteEquipment(name) {
+
+            const confirmDelete =
+                confirm(
+                    "Are you sure you want to delete " +
+                    name +
+                    "?"
+                );
+
+
+            if (confirmDelete) {
+
+                const table =
+                    document.getElementById("equipmentTable");
+
+                const rows =
+                    table
+                        .getElementsByTagName("tbody")[0]
+                        .getElementsByTagName("tr");
+
+
+                for (let i = 0; i < rows.length; i++) {
+
+                    const equipmentName =
+                        rows[i]
+                            .cells[1]
+                            .textContent
+                            .trim();
+
+
+                    if (equipmentName === name) {
+
+                        rows[i].remove();
+
+                        alert(
+                            name +
+                            " has been deleted from the list."
+                        );
+
+                        break;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
